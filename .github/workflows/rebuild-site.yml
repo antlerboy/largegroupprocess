@@ -1,0 +1,66 @@
+name: Apply large-group-processes site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - site-rebuild.tar.xz
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  rebuild-and-publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install the microsite
+        shell: bash
+        run: |
+          set -euo pipefail
+          find . -mindepth 1 -maxdepth 1 ! -name .git ! -name site-rebuild.tar.xz -exec rm -rf {} +
+          tar -xJf site-rebuild.tar.xz
+          rm -f site-rebuild.tar.xz .github/workflows/rebuild-site.yml
+          git config user.name 'antlerboy site rebuild'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m 'Build the large-group-processes microsite'
+          fi
+          pushed=false
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push origin HEAD:main; then
+              pushed=true
+              break
+            fi
+            git rebase --abort 2>/dev/null || true
+            sleep 2
+          done
+          test "$pushed" = true
+
+      - name: Prepare static site
+        shell: bash
+        run: |
+          rm -rf _site
+          mkdir _site
+          rsync -a --exclude='.git' --exclude='.github' --exclude='_site' ./ _site/
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
