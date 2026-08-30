@@ -19,10 +19,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Expand the static site
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf _site
+          mkdir _site
+          tar -xJf site-rebuild.tar.xz -C _site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
 
   deploy:
     environment:
