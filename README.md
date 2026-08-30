@@ -1,7 +1,5 @@
 # Large-group processes
 
-A public microsite indexing Benjamin P Taylor's shared Dropbox collection of large-group, whole-system and participatory processes.
+Static annotated index to Benjamin P Taylor’s shared Dropbox collection of large-group, whole-system and participatory methods.
 
-Public site: https://antlerboy.github.io/largegroupprocess/
-
-The site indexes the collection rather than asserting ownership or an open licence for third-party material. Source files remain in the shared Dropbox folder.
+The site indexes mixed-author material and does not assert an open licence over third-party works.
