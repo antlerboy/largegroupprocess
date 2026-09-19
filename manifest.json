@@ -1,6 +1,6 @@
 {
   "title": "Large-group processes shared collection",
-  "updated": "2026-08-30",
+  "updated": "2026-09-19",
   "source_folder": "https://www.dropbox.com/scl/fo/in3pvj22abhuz1aznr42t/ADbXaiB5LCpdy1OcuBZ7pbs?rlkey=yyoqyaq03g5seg2svafdb2uum&dl=0",
   "mentor": "https://link.redquadrant.com/ChatGPTlargegroupprocessmentor",
   "groups": [
@@ -435,11 +435,13 @@
   "root_files": [
     {
       "name": "2025-12-12 Benjamin Taylor - facilitation and workshop design for systems practice interventions v3.1BT as delivered.pdf",
-      "url": "https://www.dropbox.com/scl/fo/lvy8xblxsq2cf5b5ptw4g/ABo4r25LawlgFfjTggezTOU?rlkey=tglea53yd6b81otz6ly28fihz&dl=0&preview=large%20group%20processes%20documents%2F2025-12-12%20Benjamin%20Taylor%20-%20facilitation%20and%20workshop%20design%20for%20systems%20practice%20interventions%20v3.1BT%20as%20delivered.pdf"
+      "url": "https://www.dropbox.com/scl/fo/in3pvj22abhuz1aznr42t/ADbXaiB5LCpdy1OcuBZ7pbs?rlkey=yyoqyaq03g5seg2svafdb2uum&dl=0&preview=2025-12-12%20Benjamin%20Taylor%20-%20facilitation%20and%20workshop%20design%20for%20systems%20practice%20interventions%20v3.1BT%20as%20delivered.pdf"
     },
     {
       "name": "antlerboy's ChatGPT large group mentor",
       "url": "https://link.redquadrant.com/ChatGPTlargegroupprocessmentor"
     }
-  ]
+  ],
+  "method_index": "https://antlerboy.com/library/large-group-processes/",
+  "individual_entries": 114
 }
