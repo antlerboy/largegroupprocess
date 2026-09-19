@@ -38,6 +38,14 @@ jobs:
             git push origin HEAD:main
           fi
 
+      - name: Verify search and accessible filtering
+        env:
+          NODE_PATH: /tmp/collection-browser/node_modules
+        run: |
+          npm install --prefix /tmp/collection-browser --no-save playwright@1.55.0
+          /tmp/collection-browser/node_modules/.bin/playwright install --with-deps chromium
+          node .github/tests/search.cjs
+
       - name: Prepare the static site
         shell: bash
         run: |
